@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="add-product.css">
+    <title>طلب منتج - الحرج الإلكتروني</title>
+    <style>
+        /* إضافة بعض الأنماط الإضافية */
+        .product-summary {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-right: 4px solid #4a6cfa;
+        }
+        
+        .product-summary h3 {
+            color: #4a6cfa;
+            margin-bottom: 15px;
+        }
+        
+        .product-summary p {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        
+        .whatsapp-note {
+            background-color: #e1f7e3;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            border: 1px solid #25d366;
+        }
+        
+        .no-product-message {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .no-product-message a {
+            color: #4a6cfa;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .no-product-message a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="logo">الحرج الإلكتروني</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="add-product.html">إضافة منتج</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="main-title">طلب منتج من الحراج الإلكتروني</h1>
+
+        <div class="success-message" id="successMessage">
+            <div class="message-content">
+                <h3>تم إنشاء طلبك بنجاح!</h3>
+                <p>سيتم توجيهك إلى واتساب ويب لإرسال الطلب.</p>
+            </div>
+        </div>
+        
+        <!-- عرض ملخص المنتج -->
+        <div class="product-summary" id="productSummary">
+            <h3>المنتج المطلوب</h3>
+            <p id="selectedProductName">جاري تحميل معلومات المنتج...</p>
+            <p id="selectedProductPrice">جاري تحميل السعر...</p>
+        </div>
+        
+        <!-- رسالة عندما لا يكون هناك منتج محدد -->
+        <div class="no-product-message" id="noProductMessage" style="display: none;">
+            <h3>لم يتم تحديد منتج</h3>
+            <p>يجب عليك اختيار منتج من <a href="nadry.html">الصفحة الرئيسية</a> أولاً قبل تعبئة نموذج الطلب.</p>
+        </div>
+
+        <form class="product-form" id="orderForm" method="post" action="">
+            <fieldset class="fieldset1">
+                <legend>البيانات الشخصية للعميل</legend>
+                
+                <div class="input-group">
+                    <label for="nameTXT">الإسم الكامل</label>
+                    <input type="text" name="nameTXT" id="nameTXT" maxlength="50" required />
+                    <div class="error" id="nameError">يرجى إدخال الاسم الكامل</div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="NumMobil">رقم الموبايل</label>
+                    <input type="tel" name="NumMobil" id="NumMobil" maxlength="9" required />
+                    <div class="error" id="phoneError">يرجى إدخال رقم هاتف صحيح</div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="governorate">المحافظة</label>
+                    <select id="governorate" required>
+                        <option value="" selected disabled>اختر المحافظة</option>
+                        <option value="sanaa">صنعاء</option>
+                        <option value="aden">عدن</option>
+                        <option value="taiz">تعز</option>
+                        <option value="hodeidah">الحديدة</option>
+                        <option value="ibb">إب</option>
+                        <option value="dhamar">ذمار</option>
+                        <option value="amran">عمران</option>
+                        <option value="sadah">صعدة</option>
+                        <option value="hajjah">حجة</option>
+                        <option value="raymah">الريمة</option>
+                        <option value="mahwit">المحويت</option>
+                        <option value="mahrah">المهرة</option>
+                        <option value="hadramout">حضرموت</option>
+                        <option value="shabwah">شبوة</option>
+                        <option value="marib">مأرب</option>
+                        <option value="bayda">البيضاء</option>
+                        <option value="jawf">الجوف</option>
+                        <option value="dhale">الضالع</option>
+                        <option value="abyan">أبين</option>
+                        <option value="lahj">لحج</option>
+                        <option value="socotra">أرخبيل سقطرى</option>
+                    </select>
+                    <div class="error" id="governorateError">يرجى اختيار المحافظة</div>
+                </div>
+                
+                <div class="whatsapp-note">
+                    <p><strong>ملاحظة:</strong> بعد الضغط على "إرسال الطلب" سيتم فتح واتساب ويب، يرجى إرسال الرسالة بنفسك لتأكيد الطلب.</p>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary" id="submitOrderBtn">
+                        <span class="btn-text">إرسال الطلب عبر واتساب</span>
+                    </button>
+                    <a href="nadry.html" class="btn-secondary">العودة للسوق</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <div class="footer-links">
+                        <a href="index.html">الرئيسية</a>
+                        <a href="add-product.html">إضافة إعلان</a>
+                        <a href="#">من نحن</a>
+                        <a href="contact.html">اتصل بنا</a>
+                        <a href="#">شروط الاستخدام</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; فريق غزة الرقمي </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // كود JavaScript لصفحة الطلب
+    document.addEventListener('DOMContentLoaded', function() {
+        // تحميل بيانات المنتج المحدد
+        const selectedProduct = loadSelectedProduct();
+        
+        // إذا لم يكن هناك منتج محدد، تعطيل النموذج
+        if (!selectedProduct || !selectedProduct.name) {
+            document.getElementById('noProductMessage').style.display = 'block';
+            document.getElementById('orderForm').style.display = 'none';
+            document.getElementById('submitOrderBtn').disabled = true;
+        }
+        
+        // إعداد نموذج الطلب
+        const orderForm = document.getElementById('orderForm');
+        if (orderForm) {
+            orderForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                handleOrderProduct(this, selectedProduct);
+            });
+        }
+    });
+
+    // تحميل بيانات المنتج المحدد
+    function loadSelectedProduct() {
+        const selectedProduct = JSON.parse(localStorage.getItem('selectedProduct')) || {};
+        const productNameElement = document.getElementById('selectedProductName');
+        const productPriceElement = document.getElementById('selectedProductPrice');
+        
+        if (selectedProduct.name) {
+            productNameElement.innerHTML = `<strong>اسم المنتج:</strong> ${selectedProduct.name}`;
+            productPriceElement.innerHTML = `<strong>السعر:</strong> ${selectedProduct.price}`;
+            return selectedProduct;
+        } else {
+            productNameElement.textContent = "لم يتم تحديد منتج";
+            productPriceElement.textContent = "يرجى اختيار منتج من الصفحة الرئيسية أولاً";
+            return null;
+        }
+    }
+
+    // معالجة طلب المنتج
+    function handleOrderProduct(form, selectedProduct) {
+        // جمع بيانات النموذج
+        const customerName = document.getElementById('nameTXT').value;
+        const phoneNumber = document.getElementById('NumMobil').value;
+        const governorateSelect = document.getElementById('governorate');
+        const governorate = governorateSelect.options[governorateSelect.selectedIndex].text;
+        
+        // استخدام بيانات المنتج المحدد
+        const productName = selectedProduct.name || 'منتج غير معروف';
+        const productPrice = selectedProduct.price || 'السعر غير متوفر';
+        
+        // التحقق من صحة البيانات
+        if (!customerName) {
+            alert('يرجى إدخال الاسم الكامل');
+            return;
+        }
+        
+        if (!phoneNumber || phoneNumber.length !== 9 || isNaN(phoneNumber)) {
+            alert('يرجى إدخال رقم هاتف صحيح (9 أرقام)');
+            return;
+        }
+        
+        if (!governorate || governorate === 'اختر المحافظة') {
+            alert('يرجى اختيار المحافظة');
+            return;
+        }
+        
+        // حفظ طلب المنتج
+        const orderData = {
+            customerName,
+            phoneNumber,
+            governorate,
+            productName,
+            productPrice,
+            date: new Date().toLocaleString('ar-YE')
+        };
+        
+        // إرسال الطلب عبر WhatsApp
+        sendWhatsAppOrder(orderData);
+        
+        // إظهار رسالة النجاح
+        const successMessage = document.getElementById('successMessage');
+        if (successMessage) {
+            successMessage.style.display = 'block';
+        }
+        
+        // إخفاء النموذج بعد الإرسال
+        form.style.display = 'none';
+    }
+
+    // إرسال الطلب عبر WhatsApp ويب
+    function sendWhatsAppOrder(orderData) {
+        const phoneNumber = "713178831"; // رقم WhatsApp الخاص بك
+        
+        // إنشاء رسالة الطلب
+        const message = `مرحباً، أريد طلب المنتج التالي:%0A%0A` +
+                       `المنتج: ${orderData.productName}%0A` +
+                       `السعر: ${orderData.productPrice}%0A` +
+                       `الاسم: ${orderData.customerName}%0A` +
+                       `رقم الهاتف: ${orderData.phoneNumber}%0A` +
+                       `المحافظة: ${orderData.governorate}%0A` +
+                       `التاريخ: ${orderData.date}`;
+        
+        // إنشاء رابط واتساب ويب
+        const whatsappURL = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+        
+        // فتح رابط واتساب ويب في نافذة جديدة
+        window.open(whatsappURL, '_blank');
+        
+        // أيضًا عرض رسالة توجيهية للمستخدم
+        alert("سيتم فتح واتساب ويب، يرجى إرسال الرسالة بنفسك لتأكيد الطلب");
+    }
+    </script>
+</body>
+
+</html>

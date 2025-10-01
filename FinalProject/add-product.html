@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="add-product.css">
+    <title>إضافة منتج جديد - الحرج الإلكتروني</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="logo">الحرج الإلكتروني</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="add-product.html" class="active">إضافة منتج</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="main-title">إضافة منتج جديد إلى الحرج الإلكتروني</h1>
+
+        <div class="success-message" id="successMessage">
+            <div class="message-content">
+                <h3>تم إضافة المنتج بنجاح!</h3>
+                <p>سيتم توجيهك إلى السوق خلال ثوانٍ قليلة.</p>
+            </div>
+        </div>
+        <form class="product-form" id="productForm" method="post" action="" enctype="multipart/form-data">
+         
+
+            <fieldset class="form-section">
+                <legend class="section-title">بيانات المنتج المطلوبة للبيع</legend>
+
+                <div class="input-group">
+                    <label for="nameProduct">إسم المنتج</label>
+                    <input type="text" name="nameProduct" id="nameProduct" maxlength="50" required />
+                    <div class="error" id="productNameError">يرجى إدخال اسم المنتج</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="productType">نوع المنتج</label>
+                    <select id="productType" required>
+                        <option value="" selected disabled>اختر نوع المنتج</option>
+                        <option value="electronics">أجهزة إلكترونية</option>
+                        <option value="smartphones">هواتف ذكية</option>
+                        <option value="laptops">أجهزة laptop</option>
+                        <option value="accessories">إكسسوارات</option>
+                    </select>
+                    <div class="error" id="typeError">يرجى اختيار نوع المنتج</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="productCondition">حالة المنتج</label>
+                    <select id="productCondition" required>
+                        <option value="" selected disabled>اختر حالة المنتج</option>
+                        <option value="used">مستعمل</option>
+                        <option value="new">جديد</option>
+                        <option value="new-brand">جديد ماركة</option>
+                    </select>
+                    <div class="error" id="conditionError">يرجى اختيار حالة المنتج</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="productPrice">سعر المنتج</label>
+                    <input type="number" placeholder="RY" id="productPrice" min="0" required />
+                    <div class="error" id="priceError">يرجى إدخال سعر صحيح للمنتج</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="productDescription">اكتب وصف للمنتج</label>
+                    <textarea cols="60" rows="7" name="bio" id="productDescription" required></textarea>
+                    <div class="error" id="descriptionError">يرجى إدخال وصف للمنتج</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="productImage">صورة المنتج</label>
+                    <div class="file-upload">
+                        <label class="file-label" for="productImage">اختر صورة المنتج</label>
+                        <input type="file" name="productImage" id="productImage" accept="image/*" required />
+                    </div>
+                    <div class="error" id="productImageError">يرجى اختيار صورة للمنتج</div>
+                </div>
+            </fieldset>
+
+            <div class="form-actions">
+                <button type="submit" id="submitButton" class="btn-primary">
+                    <span class="btn-text">إضافة المنتج</span>
+                    <div class="loading-spinner"></div>
+                </button>
+                <a href="index.html" class="btn-secondary">العودة للسوق</a>
+            </div>
+        </form>
+    </div>
+
+   <footer>
+        <div class="container">
+            <div class="footer-content">
+                
+                
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <div class="footer-links">
+                        <a href="index.html">الرئيسية</a>
+                    
+                        <a href="#">من نحن</a>
+                        <a href="#">اتصل بنا</a>
+                      
+                    </div>
+                </div>
+                
+               
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; فريق غزة الرقمي </p>
+            </div>
+        </div>
+    </footer>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
